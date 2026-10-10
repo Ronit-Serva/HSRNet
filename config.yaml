@@ -1,0 +1,15 @@
+# Default reproducible EMNIST ByClass / LeNet-5 experiment.
+# Run with: python -m src.train
+data_dir: data
+output_dir: runs/emnist_lenet5
+seed: 42
+epochs: 100
+batch_size: 64
+learning_rate: 0.01
+momentum: 0.9
+weight_decay: 0.0
+validation_fraction: 0.1
+num_workers: 0
+device: auto
+resume: null
+download: true
