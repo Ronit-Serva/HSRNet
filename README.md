@@ -51,6 +51,23 @@ setting can still be overridden for a one-off run, for example
 Use `--device cpu` or `--device cuda` to select hardware and `--no-download`
 when the data has already been downloaded.
 
+## Plot training metrics
+
+Training automatically saves `training_metrics.png` in the configured
+`output_dir` after final test evaluation. It contains train and validation
+loss, validation accuracy, and final test accuracy.
+
+To create or refresh the plot manually:
+
+```bash
+python -m scripts.plot_metrics --config config.yaml
+```
+
+For a run in another directory, use `--output-dir /path/to/run`. While
+training is still in progress, the script plots the available loss and
+validation-accuracy history; final test accuracy is added after evaluation
+creates `test_metrics.json`.
+
 ## Collaboration conventions
 
 Keep model and training changes in `src/`, experiment invocations configurable

@@ -181,7 +181,11 @@ def train(config: TrainConfig) -> None:
     class_totals = confusion.sum(dim=1).clamp_min(1)
     per_class = {name: float(confusion[index, index] / class_totals[index]) for index, name in enumerate(CLASS_NAMES)}
     (output_dir / "per_class_accuracy.json").write_text(json.dumps(per_class, indent=2) + "\n")
+    from scripts.plot_metrics import plot_training_metrics
+
+    plot_path = plot_training_metrics(output_dir)
     print(f"test loss={test_metrics['loss']:.4f}, test accuracy={test_metrics['accuracy']:.4f}")
+    print(f"saved {plot_path}")
 
 
 def parse_args() -> TrainConfig:
